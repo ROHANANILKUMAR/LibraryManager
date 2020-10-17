@@ -1,0 +1,18 @@
+﻿<Window x:Class="LibraryManager.IncrementSelectedClass"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryManager"
+        mc:Ignorable="d"
+        Title="IncrementSelectedClass" Height="346.241" Width="239.904" Topmost="True" WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,13.6,-0.2">
+        <TextBlock x:Name="Intro" HorizontalAlignment="Left" Margin="29,10,0,0" TextWrapping="Wrap" Text="E - Library Managerr" VerticalAlignment="Top" Width="153" Height="20" TextAlignment="Center" Background="#FFCFCDCD"/>
+        <ListBox x:Name="ClassList" HorizontalAlignment="Left" Height="152" Margin="53,54,0,0" VerticalAlignment="Top" Width="100"/>
+
+        <TextBlock x:Name="SelectClass" TextWrapping="Wrap" Text="Select Class" Margin="66,35,67,214"/>
+        <TextBlock x:Name="SelectClassTo" TextWrapping="Wrap" Text="Increment To (New class Name) :" Margin="10,211,10,81"/>
+        <Button x:Name="Increment" Content="Increment" HorizontalAlignment="Left" Margin="53,267,0,0" VerticalAlignment="Top" Width="100" Height="22" Click="Increment_Click"/>
+        <TextBox x:Name="NewClassName" HorizontalAlignment="Left" Height="23" Margin="53,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+    </Grid>
+</Window>

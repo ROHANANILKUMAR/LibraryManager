@@ -1,0 +1,20 @@
+﻿<Window x:Class="LibraryManager.NewBook"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryManager"
+        mc:Ignorable="d"
+        Title="NewBook" Height="240.563" Width="357" Topmost="True" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TextBlock x:Name="Intro" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="E - Library Manager" VerticalAlignment="Top" Width="319" Height="20" TextAlignment="Center" Background="#FFCFCDCD"/>
+        <TextBlock x:Name="BookNameLbl" HorizontalAlignment="Left" Margin="10,51,0,0" TextWrapping="Wrap" Text="Book Name : " VerticalAlignment="Top" Height="21" Width="71"/>
+        <TextBox x:Name="Name" HorizontalAlignment="Left" Height="22" Margin="107,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+        <TextBlock x:Name="BookAccNOlbl" HorizontalAlignment="Left" Margin="10,88,0,0" TextWrapping="Wrap" Text="ACC NO. : " VerticalAlignment="Top" Height="21" Width="71"/>
+        <TextBox x:Name="Acc" HorizontalAlignment="Left" Height="22" Margin="107,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+        <Button x:Name="Add" Content="Add Book" HorizontalAlignment="Left" Margin="107,165,0,0" VerticalAlignment="Top" Width="121" Height="20" Click="Add_Click"/>
+        <TextBox x:Name="BookNumber" HorizontalAlignment="Left" Height="22" Margin="107,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+        <TextBlock x:Name="BookNolbl" HorizontalAlignment="Left" Margin="10,125,0,0" TextWrapping="Wrap" Text="Book NO. : " VerticalAlignment="Top" Height="21" Width="71"/>
+
+    </Grid>
+</Window>

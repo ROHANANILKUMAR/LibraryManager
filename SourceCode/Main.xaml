@@ -1,0 +1,243 @@
+﻿<Window x:Class="LibraryManager.Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LibraryManager"
+        mc:Ignorable="d" Closing="MainClose"
+        Title="E-Library Manager" MaxHeight="730" 
+        Keyboard.KeyDown="Window_KeyDown"
+        SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" MaxWidth="1366">
+    <Grid Margin="0,0,2,0" Background="#FF353535" Width="1364">
+
+        <DockPanel>
+            <Menu x:Name="menu" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Width="1388" Background="#FF353535" Margin="0,0,-30,0" Foreground="White" DockPanel.Dock="Top" ClipToBounds="True">
+                <MenuItem Header="     New" Height="Auto" Width="87" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
+                    <Button Name="Class" Content="Class" Height="28" Width="96" Click="Class_Click" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White"/>
+                    <Button Name="Book" Content="Book" Height="28" Width="97" Click="Book_Click" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White"/>
+                    <Button Name="Student" Content="Student" Height="28" Width="97" Click="Student_Click" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White"/>
+                </MenuItem>
+                <MenuItem Header="Issue | Return" Height="28" Width="87">
+                    <Button x:Name="Issue" Content="Issue" Height="28" Width="96" Click="Issue_Click" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White"/>
+                    <Button x:Name="Return" Content="Return" Height="28" Width="96" Click="Return_Click" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White"/>
+                </MenuItem>
+
+                <MenuItem Header="Settings" Height="28" Width="87">
+                    <Button x:Name="Change_Classname" Content="Change Class Name" Height="28" Width="120" Click="Change_Classname_Click" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White"/>
+                    <Button x:Name="Change_Password" Content="Change Password" Height="28" Width="120" Click="Change_Password_Click" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White"/>
+                    <Button x:Name="Delete_Class" Content="Delete Class" Height="28" Width="120" Click="Delete_Class_Click" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White"/>
+                    <Button x:Name="LoginAttempts" Content="Login Attempts" Height="28" Width="120" Click="LoginAttempts_Click" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White"/>
+                    <Separator/>
+
+                    <Button x:Name="Credits" Content="Credits" Height="28" Width="120" Click="Credits_Click" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White"/>
+                </MenuItem>
+
+            </Menu>
+        </DockPanel>
+        <Grid Margin="23,46,1142,23.4"  >
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Frame x:Name="MainFrame"  HorizontalAlignment="Left" Height="597" Margin="10,33,-1119,0" VerticalAlignment="Top" Width="1308" Background="#FF353535" BorderThickness="1" Foreground="#FF383838"/>
+            <TextBlock x:Name="ClassesLbl" HorizontalAlignment="Left" Margin="0,2,0,0" TextWrapping="Wrap" Text="Class" VerticalAlignment="Top" Height="26" Width="193" TextAlignment="Center" Background="#FF4E4E4E" Foreground="White"/>
+            <ListBox x:Name="ClassList" HorizontalAlignment="Left" Height="550" Margin="0,33,0,0" VerticalAlignment="Top" Width="193" FontSize="16" FontWeight="Bold" Background="#FF5D5D5F" BorderBrush="{x:Null}" Foreground="White"/>
+            <Button HorizontalAlignment="Left" Content="Add Class" Margin="0,597,0,0" VerticalAlignment="Top" Width="193" Height="28" Click="Class_Click" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White">
+            </Button>
+        </Grid>
+        <Menu Margin="228,50,0,621" Background="#FF353535">
+            <MenuItem Header="Search By Student ID" Background="#FF4E4E4E" Height="21" Foreground="White" >
+                <Grid Width="359" Background="#FF353535" Height="39">
+                    <TextBlock x:Name="Student_ID_Label" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Admission No. : " VerticalAlignment="Top" Height="16" Width="87" Foreground="White" Margin="0,10,0,0"/>
+                    <TextBox x:Name="StudentID" HorizontalAlignment="Left" Height="21" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" BorderBrush="{x:Null}" Background="#FF525252" Foreground="White" Margin="106,8,0,0"/>
+                    <Button x:Name="SearchByStudentID" Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="76" Height="19" Click="SearchByStudentID_Click" Background="#FF636363" Foreground="White" Margin="273,10,0,0"/>
+                </Grid>
+            </MenuItem>
+            <MenuItem Header="Search By Book Acc" Height="20" Background="#FF4E4E4E" Foreground="White">
+                <Grid Width="359" Background="#FF353535" Height="39">
+                    <TextBlock x:Name="Book_ACCNO_Label" HorizontalAlignment="Left" TextWrapping="Wrap" Text="ACC No. : " VerticalAlignment="Top" Height="23" Width="66" RenderTransformOrigin="0.515,0.5" Foreground="White" Margin="10,7,0,0"/>
+                    <TextBox x:Name="BookID" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="162" BorderBrush="{x:Null}" Background="#FF525252" Foreground="White" Margin="100,7,0,0"/>
+                    <Button x:Name="SearchByBookID" Content="Search" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="76" Height="23" Click="SearchByBookID_Click" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White" Margin="277,7,0,0"/>
+                </Grid>
+            </MenuItem>
+            <MenuItem Header="Search By Book Name" Height="20" Background="#FF4E4E4E" Foreground="White">
+                <Grid Width="623" Background="#FF353535" Height="39">
+                    <TextBlock x:Name="BookNamelbl" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Book Name :" VerticalAlignment="Top" Height="23" Width="77" Foreground="White" Margin="10,7,0,0"/>
+                    <TextBox x:Name="BookNameTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="359" BorderBrush="{x:Null}" Background="#FF525252" Foreground="White" Margin="125,7,0,0"/>
+                    <Button x:Name="SearchByBookName" Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="93" Height="22" Click="SearchByBookName_Click" RenderTransformOrigin="0.5,0.5" Background="#FF636363" Foreground="White" Margin="520,10,0,0"/>
+                </Grid>
+            </MenuItem>
+            <MenuItem Header="Search By Student Name" Height="20" Background="#FF4E4E4E" Foreground="White">
+                <Grid Width="623" Background="#FF353535" Height="39">
+                    <TextBlock x:Name="StudentNamelblIntro" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Student Name :" VerticalAlignment="Top" Height="23" Width="102" Foreground="White" Margin="10,10,0,0"/>
+                    <TextBox x:Name="StudentNameTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="359" BorderBrush="{x:Null}" Background="#FF525252" Foreground="White" Margin="125,7,0,0"/>
+                    <Button x:Name="SearchByStudentName" Content="Search" HorizontalAlignment="Left" VerticalAlignment="Top" Width="93" Height="22" RenderTransformOrigin="0.5,0.5" Background="#FF636363" Foreground="White" Margin="520,10,0,0" Click="SearchByStudentName_Click"/>
+                </Grid>
+            </MenuItem>
+        </Menu>
+        <Border Margin="228,79,0,0" BorderBrush="White" Width="1112" HorizontalAlignment="Left" Height="592" BorderThickness="4" VerticalAlignment="Top"/>
+        <Grid x:Name="MainGrid" HorizontalAlignment="Left" Height="592" Margin="228,79,0,0" VerticalAlignment="Top" Width="1112" Background="#FF3F3F3F">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="MainIntro" HorizontalAlignment="Left" Margin="48,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="89" Width="1032" FontSize="60" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" Foreground="#FF526C93" FontFamily="Adobe Garamond Pro" Text="E - LIBRARY MANAGER"/>
+            <TextBlock x:Name="Blah"  HorizontalAlignment="Left" Margin="48,330,0,0" TextAlignment="Center" VerticalAlignment="Top" Height="49" Width="1032" FontSize="24" FontFamily="Prestige Elite Std" Foreground="#FF526C93" Text="www.sfdevrohan.blogspot.com"/>
+        </Grid>
+
+        <Grid x:Name="StudentFrame" Visibility="Hidden" HorizontalAlignment="Left" Height="592" Margin="228,79,0,0" VerticalAlignment="Top" Width="1112" Background="#FF3F3F3F">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="661*"/>
+                <ColumnDefinition Width="451*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="StudentName" HorizontalAlignment="Left" Margin="213,15,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Height="22" Width="84" Foreground="White"/>
+            <ListBox x:Name="StudentRollList" HorizontalAlignment="Left" MinHeight="545" Margin="10,37,0,0" VerticalAlignment="Top" Width="198" BorderBrush="{x:Null}" Background="#FF585B5C" Foreground="White"/>
+            <ListBox x:Name="StudentNameList" HorizontalAlignment="Left" MinHeight="545" Margin="213,37,0,0" VerticalAlignment="Top" Width="473" Background="#FF585B5C" Foreground="White" BorderBrush="{x:Null}" Grid.ColumnSpan="2"/>
+            <TextBlock x:Name="StudentRollNumber" HorizontalAlignment="Left" Margin="10,15,0,0" TextWrapping="Wrap" Text="Roll Number" VerticalAlignment="Top" Height="22" Width="84" Foreground="White"/>
+            <ListBox x:Name="StudentAddmList" HorizontalAlignment="Left" MinHeight="545" Margin="30.2,37,0,0" VerticalAlignment="Top" Width="198" BorderBrush="{x:Null}" Background="#FF585B5C" Foreground="White" Grid.Column="1"/>
+            <TextBlock x:Name="StudentName_Copy" HorizontalAlignment="Left" Margin="30.2,15,0,0" TextWrapping="Wrap" Text="Admission Number" VerticalAlignment="Top" Height="22" Width="172" Foreground="White" Grid.Column="1"/>
+            <Button x:Name="StudentFrameClose" Content="Close" Grid.Column="1" HorizontalAlignment="Left" Margin="366.2,10,0,0" VerticalAlignment="Top" Width="75" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White" Click="StudentFrameClose_Click" Height="27"/>
+            <Button Content="New Student" Grid.Column="1" HorizontalAlignment="Left" Margin="294.2,85,0,0" VerticalAlignment="Top" Width="101" Height="25" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White" Click="Student_Click"/>
+        </Grid>
+        <Grid x:Name="BookSuggestions" Visibility="Hidden" HorizontalAlignment="Left" Height="592" Margin="228,79,0,0" VerticalAlignment="Top" Width="1112" Background="#FF3F3F3F">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="BookSuggestionsIntro" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Book Suggestions" VerticalAlignment="Top" Height="43" Width="1092" TextAlignment="Center" FontSize="36" Foreground="#FF359DFF" FontFamily="Prestige Elite Std"/>
+            <ListBox x:Name="BookList" HorizontalAlignment="Left" Height="498" Margin="10,84,0,0" VerticalAlignment="Top" Width="1092" Background="#FF585B5C" Foreground="White"/>
+            <Button x:Name="CloseBookSuggestion" Content="Close" HorizontalAlignment="Left" Margin="1012,10,0,0" VerticalAlignment="Top" Width="90" Height="28" Click="CloseBookSuggestion_Click" Background="#FF525252" Foreground="White" BorderBrush="{x:Null}"/>
+        </Grid>
+
+        <Grid x:Name="StudentSuggestions" Visibility="Hidden" HorizontalAlignment="Left" Height="592" Margin="228,79,0,0" VerticalAlignment="Top" Width="1112" Background="#FF3F3F3F">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock x:Name="StudentSuggestionsIntro" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Student Suggestions" VerticalAlignment="Top" Height="43" Width="1092" TextAlignment="Center" FontSize="36" Foreground="#FF359DFF" FontFamily="Prestige Elite Std"/>
+            <ListBox x:Name="StudentList" HorizontalAlignment="Left" Height="498" Margin="10,84,0,0" VerticalAlignment="Top" Width="1092" Background="#FF585B5C" Foreground="White" SelectionChanged="StudentList_SelectionChanged"/>
+            <Button x:Name="CloseStudentSuggestion" Content="Close" HorizontalAlignment="Left" Margin="1012,10,0,0" VerticalAlignment="Top" Width="90" Height="28" Background="#FF525252" Foreground="White" BorderBrush="{x:Null}" Click="CloseStudentSuggestion_Click"/>
+        </Grid>
+
+        <Grid x:Name="BookInfoGrid" Visibility="Hidden" HorizontalAlignment="Left" Height="592" Margin="228,79,0,0" VerticalAlignment="Top" Width="1112" Background="#FF3F3F3F">
+            <TextBlock x:Name="BookInfoIntro" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Book Info" VerticalAlignment="Top" Height="35" Width="1091"  TextAlignment="Center" FontSize="36" Foreground="#FF359DFF" FontFamily="Prestige Elite Std"/>
+
+            <TextBlock x:Name="BookNameLabel" HorizontalAlignment="Left" Margin="10,73,0,0" TextWrapping="Wrap" Text="Book Name : " VerticalAlignment="Top" Height="25" Width="78" Foreground="White"/>
+            <TextBlock x:Name="BookAccLabel" HorizontalAlignment="Left" Margin="632,73,0,0" TextWrapping="Wrap" Text="Book Acc Number: " VerticalAlignment="Top" Height="25" Width="118" Foreground="White"/>
+            <TextBlock x:Name="BookName" HorizontalAlignment="Left" Margin="145,73,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="25" Width="401" Foreground="Wheat"/>
+            <TextBlock x:Name="BookAcc" HorizontalAlignment="Left" Margin="790,73,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="25" Width="214" Foreground="Wheat"/>
+            <TextBlock x:Name="CurrentlyTakenByLabel" HorizontalAlignment="Left" Text="Currently issued by :" Margin="632,120,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="24" Width="138" Foreground="White"/>
+            <TextBlock x:Name="CurrentlyIssued" HorizontalAlignment="Left" Margin="791,120,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="25" Width="311" Foreground="Wheat"/>
+            <Button x:Name="DeleteBookButton" Content="Delete" HorizontalAlignment="Left" Margin="478,558,0,0" VerticalAlignment="Top" Width="102" Height="24" Click="DeleteBookButton_Click" Foreground="White" Background="#FF636363" BorderBrush="{x:Null}"/>
+            <Button x:Name="StudentInfoSearch" Content="Search for this person" HorizontalAlignment="Left" Margin="959,150,0,0" VerticalAlignment="Top" Width="142" Height="25" Click="StudentInfoSearch_Click" Foreground="White" Background="#FF636363" BorderBrush="{x:Null}"/>
+            <Button x:Name="IssueFromBookinfoFrame" Content="Issue" HorizontalAlignment="Left" Margin="10,558,0,0" VerticalAlignment="Top" Width="110" Height="24" Click="IssueFromBookinfoFrame_Click" Foreground="White" Background="#FF636363" BorderBrush="{x:Null}"/>
+            <Button x:Name="ReurnFromBookInfoFrame" Content="Return" HorizontalAlignment="Left" Margin="992,558,0,0" VerticalAlignment="Top" Width="110" Height="24" Click="ReurnFromBookInfoFrame_Click" Foreground="White" Background="#FF636363" BorderBrush="{x:Null}"/>
+            <Button x:Name="CloseBookInfo" Content="Close" HorizontalAlignment="Left" Margin="1008,10,0,0" VerticalAlignment="Top" Width="93" Height="22" Click="CloseBookInfo_Click" Foreground="White" Background="#FF636363" BorderBrush="{x:Null}"/>
+            <TextBlock x:Name="BookNoLabel" HorizontalAlignment="Left" Margin="10,120,0,0" TextWrapping="Wrap" Text="Book Number : " VerticalAlignment="Top" Height="25" Width="110" Foreground="White"/>
+            <TextBlock x:Name="BookNo" HorizontalAlignment="Left" Margin="145,120,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="25" Width="266" Foreground="Wheat"/>
+            <Grid Background="#FF3F3D3D" Margin="10,180,10,39">
+                <DataGrid x:Name="BookData" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" Height="340" Width="1059" Background="#FF585B5C"/>
+                <TextBlock x:Name="BookDataIntro" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Issued By " VerticalAlignment="Top" Height="25" Width="110" Foreground="White"/>
+            </Grid>
+
+        </Grid>
+
+
+        <Grid Name="StudentInfoFrame" Visibility="Hidden"  HorizontalAlignment="Left" Height="592" Margin="228,79,0,0" VerticalAlignment="Top" Width="1112" Background="#FF3F3F3F">
+            <TextBlock x:Name="StudentNamelbl" HorizontalAlignment="Left" Margin="10,56,0,0" TextWrapping="Wrap" Text="Name :" VerticalAlignment="Top" Height="22" Width="110" Foreground="White"/>
+            <TextBlock x:Name="StudentAdmissionlbl" HorizontalAlignment="Left" Margin="10,102,0,0" TextWrapping="Wrap" Text="Admission Number :" VerticalAlignment="Top" Height="24" Width="110" Foreground="White"/>
+            <TextBlock x:Name="intro" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Student Details" VerticalAlignment="Top" Height="41" Width="1091" TextAlignment="Center" FontSize="36" Foreground="#FF359DFF" FontFamily="Prestige Elite Std"/>
+            <TextBlock x:Name="NameDisplay" HorizontalAlignment="Left" Margin="180,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" Width="208" Foreground="Wheat"/>
+            <TextBlock x:Name="AdmissionNumberDisplay"  Foreground="Wheat" HorizontalAlignment="Left" Margin="180,102,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="16" Width="208"/>
+            <TextBlock x:Name="ClassDisplay" HorizontalAlignment="Left" Margin="692,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" Width="208" Foreground="Wheat"/>
+            <TextBlock x:Name="RollNumberDisplay" HorizontalAlignment="Left" Margin="692,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" Width="208" Foreground="Wheat"/>
+            <TextBlock x:Name="StudentClasslbl" HorizontalAlignment="Left" Margin="577,62,0,0" TextWrapping="Wrap" Text="Class :" VerticalAlignment="Top" Height="22" Width="110" Foreground="White"/>
+            <TextBlock x:Name="StudentRolllbl" HorizontalAlignment="Left" Margin="577,102,0,0" TextWrapping="Wrap" Text="Roll number :" VerticalAlignment="Top" Height="22" Width="110" Foreground="White"/>
+            <Grid Background="#FF3F3D3D" Margin="10,152,23,34">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <DataGrid x:Name="StudentData" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="386" Width="1059" Background="#FF585B5C"/>
+            </Grid>
+            <TextBlock x:Name="rbookintro" HorizontalAlignment="Left" Margin="10,131,0,0" TextWrapping="Wrap" Text="Recent Books" VerticalAlignment="Top" Width="1079" Height="21" Foreground="White" FontSize="14" TextAlignment="Center" />
+            <Button x:Name="IssueBook" Content="Issue Book" HorizontalAlignment="Left" Margin="10,563,0,0" VerticalAlignment="Top" Width="78" Height="19" Click="IssueBook_Click" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White"/>
+            <Button x:Name="ReturnBook" Content="Return Book" HorizontalAlignment="Left" Margin="1005,563,0,0" VerticalAlignment="Top" Width="78" Height="19" Click="ReturnBook_Click" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White"/>
+            <Button x:Name="StudentInfoFrameClose" Content="Close" HorizontalAlignment="Left" Margin="1025,10,0,0" VerticalAlignment="Top" Width="76" Click="StudentInfoFrameClose_Click" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White"/>
+            <Button x:Name="EditStudent" Content="Edit" HorizontalAlignment="Left" Margin="268,563,0,0" VerticalAlignment="Top" Width="74" Height="19" Click="EditStudent_Click" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White"/>
+            <Button x:Name="DeleteStudent" Content="Delete" HorizontalAlignment="Left" Margin="772,563,0,0" VerticalAlignment="Top" Width="74" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White" Height="19" Click="DeleteStudent_Click" RenderTransformOrigin="0.446,0.711"/>
+            <Button x:Name="AddFine" Content="Fine" HorizontalAlignment="Left" Margin="516,563,0,10" Width="74" Click="AddFine_Click" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White"/>
+            <Grid x:Name="FineGrid"  HorizontalAlignment="Left" Height="56" Margin="960,62,0,0" VerticalAlignment="Top" Width="123" Background="White">
+                <TextBlock x:Name="Fine_Amountlbl" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Fine Amount :" VerticalAlignment="Top"/>
+                <TextBlock x:Name="FineAmount" HorizontalAlignment="Left" Margin="10,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="74"/>
+            </Grid>
+        </Grid>
+
+        <Grid Name="IssueFrame" Visibility="Hidden"  HorizontalAlignment="Left" Height="592" Margin="228,79,0,0" VerticalAlignment="Top" Width="1112" Background="#FF3F3F3F">
+            <TextBlock x:Name="Issueintro" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Issue Book" VerticalAlignment="Top" Height="35" Width="1091" TextAlignment="Center" FontSize="36" Foreground="#FF359DFF" FontFamily="Prestige Elite Std"/>
+            <Grid Name="IssueGrid" Margin="64,76,11,174">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="StudentAdmissionNumberlblIssue" HorizontalAlignment="Left" Margin="141,51,0,0" TextWrapping="Wrap" Text="Student Admission Number:" Foreground="White" VerticalAlignment="Top" Height="23" Width="168"/>
+                <TextBox x:Name="AdmissionNumberForIssue" HorizontalAlignment="Left" Height="23" Margin="387,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="144" Background="#FF525252" Foreground="White"/>
+                <Button x:Name="Check_Student_Name" Content="Check" HorizontalAlignment="Left" Margin="596,51,0,0" VerticalAlignment="Top" Width="106" Height="23" Click="Check_Student_Name_Click" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White"/>
+                <TextBlock x:Name="IStudentname" HorizontalAlignment="Left" Margin="806,51,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="23" Width="200" Foreground="Wheat"/>
+                <TextBlock x:Name="BookAAccNumberlblIssue" HorizontalAlignment="Left" Margin="141,97,0,0" TextWrapping="Wrap" Text="Book Acc Number:" VerticalAlignment="Top" Height="24" Width="168" Foreground="White"/>
+                <TextBox x:Name="AccNumberForIssue" HorizontalAlignment="Left" Height="23" Margin="387,98,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="144" Background="#FF525252" Foreground="White"/>
+                <Button x:Name="Check_Book_Name" Content="Check" HorizontalAlignment="Left" Margin="597,98,0,0" VerticalAlignment="Top" Width="105" Height="23" Click="Check_Book_Name_Click" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White"/>
+                <TextBlock x:Name="IBookname" HorizontalAlignment="Left" Margin="806,98,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="23" Width="200" Foreground="Wheat"/>
+                <TextBlock x:Name="DateForIssue" HorizontalAlignment="Left" Margin="141,218,0,0" TextWrapping="Wrap" Text="Date :" VerticalAlignment="Top" Height="22" Width="75" Foreground="White"/>
+                <Button x:Name="IssueButton" Content="Issue" HorizontalAlignment="Left" Margin="387,289,0,0" VerticalAlignment="Top" Width="144" Height="21" Click="IssueButton_Click" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White"/>
+                <TextBox x:Name="DateTextBox" HorizontalAlignment="Left" Height="23" Margin="387,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="144" Background="#FF525252" Foreground="White"/>
+                <Menu Margin="387,143,506,163.4" Background="#FF3F3F3F">
+                    <MenuItem Header="Find" Foreground="White" Height="36" Width="144" HorizontalContentAlignment="Center" BorderBrush="White" >
+                        <MenuItem Header="Find Student" Foreground="White" Height="36" Background="#FF3F3F3F" Margin="0,0,10,0">
+                            <Grid Height="310" Width="386" Background="#FF3F3F3F">
+                                <Label Content="Student Name :" Foreground="White" Margin="0,10,275,269"/>
+                                <TextBox x:Name="FindStudentIssue" Background="#FF525252" Foreground="White" Margin="141,10,10,269" TextChanged="FindStudentIssue_TextChanged"/>
+                                <ListBox x:Name="FindStudentListIssue" HorizontalAlignment="Left" Height="254" Margin="11,46,0,0" VerticalAlignment="Top" Width="365" Background="#FF585B5C" Foreground="White" SelectionChanged="FindStudentListIssue_SelectionChanged"/>
+                            </Grid>
+                        </MenuItem>
+                        <MenuItem Header="Find Book" Foreground="White" Height="36" Background="#FF3F3F3F" Margin="0,0,10,0">
+                            <Grid Height="310" Width="386" Background="#FF3F3F3F">
+                                <Label Content="Book Name :" Foreground="White" Margin="0,10,275,269"/>
+                                <TextBox x:Name="FindBookIssue" Background="#FF525252" Foreground="White" Margin="141,10,10,269" TextChanged="FindBookIssue_TextChanged"/>
+                                <ListBox x:Name="FindBookListIssue" HorizontalAlignment="Left" Height="254" Margin="11,46,0,0" VerticalAlignment="Top" Width="365" Background="#FF585B5C" Foreground="White" SelectionChanged="FindBookListIssue_SelectionChanged"/>
+                            </Grid>
+                        </MenuItem>
+                    </MenuItem>
+                </Menu>
+
+            </Grid>
+            <Button x:Name="Closeb" Content="Close" HorizontalAlignment="Left" Margin="1015,10,0,0" VerticalAlignment="Top" Width="86" Height="22" Click="Close_Click" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White"/>
+        </Grid>
+        <Grid Name="ReturnFrame" Visibility="Hidden"  HorizontalAlignment="Left" Height="592" Margin="228,79,0,0" VerticalAlignment="Top" Width="1112" Background="#FF3F3F3F">
+            <TextBlock x:Name="Returnintro" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Return Book" VerticalAlignment="Top" Height="35" Width="1091" TextAlignment="Center" FontSize="36" Foreground="#FF359DFF" FontFamily="Prestige Elite Std"/>
+            <Grid Name="ReturnGrid" Margin="64,76,11,48">
+                <TextBlock x:Name="StudentAdmissionNumberlblReturn" HorizontalAlignment="Left" Margin="141,87,0,0" TextWrapping="Wrap" Text="Student Admission Number:" VerticalAlignment="Top" Height="23" Width="168" Foreground="White"/>
+                <TextBox x:Name="AdmissionNumberForReturn" HorizontalAlignment="Left" Height="23" Margin="387,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="144" Background="#FF525252" Foreground="White"/>
+                <Button x:Name="Check_Student_NameReturn" Content="Check" HorizontalAlignment="Left" Margin="596,87,0,0" VerticalAlignment="Top" Width="106" Height="23" Click="Check_Student_NameReturn_Click" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White"/>
+                <TextBlock x:Name="IStudentnameReturn" HorizontalAlignment="Left" Margin="387,129,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="23" Width="297" Foreground="Wheat"/>
+                <TextBlock x:Name="IBooknameReturn" HorizontalAlignment="Left" Margin="387,170,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="22" Width="297" Foreground="Wheat"/>
+                <TextBlock x:Name="DateForReturn" HorizontalAlignment="Left" Margin="148,298,0,0" TextWrapping="Wrap" Text="Date :" Foreground="White" VerticalAlignment="Top" Height="22" Width="75"/>
+                <Button x:Name="ReturnButton" Content="Return" HorizontalAlignment="Left" Margin="387,397,0,0" VerticalAlignment="Top" Width="144" Height="21" Click="ReturnButton_Click" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White"/>
+                <TextBox x:Name="DateTextBoxReturn" HorizontalAlignment="Left" Height="23" Margin="387,298,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="144" Background="#FF525252" Foreground="White"/>
+                <TextBlock x:Name="ReturnStudentName" HorizontalAlignment="Left" Margin="141,129,0,0" TextWrapping="Wrap" Text="Student Name :" VerticalAlignment="Top" Height="23" Foreground="White" RenderTransformOrigin="0.49,0.761"/>
+                <TextBlock x:Name="ReturnBookName" HorizontalAlignment="Left" Margin="141,169,0,0" TextWrapping="Wrap" Text="Book Name :" VerticalAlignment="Top" Foreground="White" Height="23" RenderTransformOrigin="0.49,0.761"/>
+                <Menu Margin="387,216,506,216" Background="#FF3F3F3F">
+                    <MenuItem Header="Find" Foreground="White" HorizontalContentAlignment="Center" BorderBrush="White" Height="36" Width="144" >
+                        <MenuItem Header="Find Student" Foreground="White" Height="36" Background="#FF3F3F3F" Margin="0,0,10,0">
+                            <Grid Height="310" Width="386" Background="#FF3F3F3F">
+                                <Label Content="Student Name :" Foreground="White" Margin="0,10,275,269"/>
+                                <TextBox x:Name="FindStudentReturn" Background="#FF525252" Foreground="White" Margin="141,10,10,269" TextChanged="FindStudentReturn_TextChanged"/>
+                                <ListBox x:Name="FindStudentListReturn" HorizontalAlignment="Left" Height="254" Margin="11,46,0,0" VerticalAlignment="Top" Width="365" Background="#FF585B5C" Foreground="White" SelectionChanged="FindStudentListReturn_SelectionChanged"/>
+                            </Grid>
+                        </MenuItem>
+                    </MenuItem>
+                </Menu>
+            </Grid>
+            <Button x:Name="CloseReturn" Content="Close" HorizontalAlignment="Left" Margin="1015,10,0,0" VerticalAlignment="Top" Width="86" Height="22" Click="CloseReturn_Click" Background="#FF636363" BorderBrush="{x:Null}" Foreground="White"/>
+        </Grid>
+
+
+
+
+
+    </Grid>
+</Window>
